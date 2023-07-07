@@ -2,21 +2,39 @@
 @using BlazorApp.Shared
 @inject HttpClient Http
 
-<h1>Azure Function Test</h1>
+<h3>Add custom announcement</h3>
 
-<h2>@result</h2>
+<div class="center">
+    <label for="inputValue">URL:</label>
+    <input type="text" id="inputValue" @bind="@InputValue"/>
+
+    <br />
+    <br />
+    
+    <button @onclick="AddAnnouncement">Add Announcement</button>
+    
+    <br />
+</div>
+
+@if (!string.IsNullOrEmpty(Result))
+{
+    <p>Result: @Result</p>
+}
 
 @code {
-    private string result = "temp value";
+    
+    private static string? InputValue { get; set; }
+    private string? Result { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    
+    private async Task AddAnnouncement()
     {
         try
         {
-            HttpContent requestBody = new StringContent("{\"name\": \"John\"}");
-            HttpResponseMessage response = await Http.PostAsync("/api/GownoPsa", requestBody);
+            HttpContent requestBody = new StringContent($"${{\"name\": \"{InputValue}\"}}");
+            var response = await Http.PostAsync("/api/GownoPsa", requestBody);
 
-            result = response.StatusCode.ToString();
+            Result = response.StatusCode.ToString();
         }
         catch (Exception ex)
         {
