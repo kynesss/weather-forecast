@@ -14,7 +14,7 @@
         try
         {
             HttpContent requestBody = new StringContent("{\"name\": \"John\"}");
-            HttpResponseMessage response = await Http.PostAsync("/api/HelloYou", requestBody);
+            HttpResponseMessage response = await Http.PostAsync("/api/GownoPsa", requestBody);
 
             result = response.StatusCode.ToString();
         }
