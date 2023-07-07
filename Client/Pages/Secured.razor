@@ -1,0 +1,19 @@
+﻿@page "/secured"
+@inject HttpClient Http
+
+
+<h1>Azure function test</h1>
+
+<h2>@result</h2>
+
+
+@code {
+    private string result = "temp value";
+
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await Http.GetStringAsync("/api/secured/CustomAnnouncement?url=cyce");
+        result = response;
+    }
+
+}
