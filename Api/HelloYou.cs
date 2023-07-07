@@ -16,7 +16,7 @@ public static class HelloYou
 {
     [FunctionName("HelloYou")]
     public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "HelloYou")]
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post")]
         HttpRequest req,
         ILogger log)
     {
