@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace ApiIsolated
 {
@@ -20,6 +21,11 @@ namespace ApiIsolated
                                 .AllowAnyHeader();
                         });
                     });
+                })
+                .ConfigureLogging(logging =>
+                {
+                    logging.AddConsole();
+                    logging.SetMinimumLevel(LogLevel.Debug);
                 })
                 .Build();
 

@@ -1,5 +1,4 @@
 ﻿@page "/secured"
-@using Microsoft.AspNetCore.Authorization
 @inject HttpClient Http
 
 <h1>Azure Function Test</h1>
@@ -11,7 +10,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var response = await Http.GetStringAsync("/api/HelloYou?name=cloudies");
+        var response = await Http.GetStringAsync("https://localhost:44350/api/HelloYou");
         result = response.ToString();
     }
 
