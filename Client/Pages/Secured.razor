@@ -13,7 +13,7 @@
     {
         try
         {
-            var response = await Http.GetStringAsync("/api/HelloYou?name=lysygrzyb");
+            var response = await Http.GetStringAsync("/api/HelloYou");
 
             if (!string.IsNullOrEmpty(response))
                 result = response;
